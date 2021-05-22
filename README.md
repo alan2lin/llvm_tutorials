@@ -4,14 +4,14 @@ llvm 教程翻译
 ## 环境准备
 本环境操作系统 是 ubuntu 21.04 
 
-确保你已经安装了 make 
-执行环境依赖包初始化
+确保你已经安装了 make    
+执行环境依赖包初始化    
 ` make init_ubuntu `
 
 ## 运行
-
-` make all`
-查看 target 目录下的 内容即可
+执行    
+` make all`   
+然后 查看 target 目录下的 内容即可
 
 * [纯中文版pdf](target/pdf/main_zh.pdf)
 * [双语版pdf](target/pdf/main_mix.pdf)
@@ -69,7 +69,10 @@ llvm 教程翻译
         ├── main_mix.pdf
         └── main_zh.pdf
 
-<pre>
+</pre>
+
 
 ## 工作过程
 latex 是核心
+
+## 欢迎来搞
