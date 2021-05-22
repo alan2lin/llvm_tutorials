@@ -4,59 +4,82 @@
 
 
 
-SUBDIR_ROOTS := TeX_files 
-DIRS := . $(shell find $(SUBDIR_ROOTS) -type d )
+SUBDIR_ROOTS := chapters 
+DIRS := . $(shell find $(SUBDIR_ROOTS) -type d ) resources/images-gen
 GARBAGE_PATTERNS := "*.gz(busy)" *.aux *.log  *.aux *.bbl *.log *.out *.synctex.gz *.fls *.toc 
-GARBAGE_PATTERNS_ALL := $(GARBAGE_PATTERNS) *.pdf  *.dvi *.md 
+GARBAGE_PATTERNS_ALL := $(GARBAGE_PATTERNS) *.pdf  *.dvi *.md *.svg *.png *.jpg
 GARBAGE := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS)))
-GARBAGE_ALL := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS_ALL)))
+GARBAGE_ALL := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS_ALL))) 
+TARGET_DIR := ../target
+TARGET_FILES :=$(shell find $(TARGET_DIR)/ -type f -name "*" )
+RESOURCES_DIR := resources
+DOT_FILES := $(shell find $(RESOURCES_DIR)/dot/ -type f -name "*.dot" )
 
 
 all: pdf md clean
 pdf: zh_pdf mix_pdf 
-md: zh_md
+md: zh_md mix_md
 
-zh_pdf:
-	@echo "纯中文版生成开始...."
+zh_pdf: common_dep
+	@echo "纯中文版pdf生成开始...."
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_zh.pdf ; done
 
 
 %_zh.pdf: %.tex
-	@echo "纯中文版生成...."
+	@echo "纯中文版pdf生成...."
 	rubber -m pdftex --jobname=$(basename $<)_zh $< 
-	@echo "拷贝到targe...."
-	mv $@ ../target/pdf/
+	@echo "拷贝到target...."
+	mv $@ $(TARGET_DIR)/pdf/
 
-mix_pdf:
-	@echo "双语版生成开始...."
+mix_pdf: common_dep
+	@echo "双语版生pdf成开始...."
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_mix.pdf ; done
 
 %_mix.pdf: %.tex
-	@echo "双语版生成...."
+	@echo "双语版pdf生成...."
 	rubber -m pdftex --jobname=$(basename $<)_mix $< 
-	@echo "拷贝到targe...."
-	mv $@ ../target/pdf/
+	@echo "拷贝到target...."
+	mv $@ $(TARGET_DIR)/pdf/
 
-zh_md:
-	@echo "md版生成..."
+zh_md: common_dep
+	@echo "纯中文版md开始..."
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_zh.md ; done
 
 %_zh.md: %.tex
-	@echo "纯中文版生成...."
+	@echo "纯中文版md生成...."
 	pandoc -f latex -t markdown $< -o $(basename $<)_zh.md
 	@echo "拷贝到targe...."
-	mv $@ ../target/md/
+	mv $@ $(TARGET_DIR)/md/
+
+mix_md: common_dep
+	@echo "双语版md开始..."
+	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_mix.md ; done
+
+%_mix.md: %.tex
+	@echo "纯中文版md生成...."
+	pandoc -f latex -t markdown $< -o $(basename $<)_mix.md
+	@echo "拷贝到targe...."
+	mv $@ $(TARGET_DIR)/md/
+
+common_dep:
+	@echo " commond dependency..."
+	mkdir -p $(TARGET_DIR)/pdf/
+	mkdir -p $(TARGET_DIR)/md/resources
+	dot -Tsvg $(DOT_FILES) -o $(RESOURCES_DIR)/images-gen/$(basename $(notdir $(DOT_FILES))).svg 
+	cp -R $(RESOURCES_DIR)/images-gen $(TARGET_DIR)/md/resources
+	cp -R $(RESOURCES_DIR)/images $(TARGET_DIR)/md/resources
 
 clean:
 	@echo "清理...."
-	rm -f $(GARBAGE_PATTERNS) 
+	rm -f $(GARBAGE) 
 
 cleanall:
 	@echo "清理所有...."
-	echo $(GARBAGE_ALL)
 	rm -f $(GARBAGE_ALL) 
+	rm -rf $(TARGET_DIR)
+	
 
-.PHONY: all pdf zh_pdf clean cleanall
+.PHONY: all pdf zh_pdf mix_pdf md zh_md mix_md clean cleanall
 .SILENT: pdf
 
 # vim: set tabstop=4 shiftwidth=4 noexpandtab
