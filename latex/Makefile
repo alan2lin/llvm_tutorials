@@ -77,9 +77,17 @@ cleanall:
 	@echo "清理所有...."
 	rm -f $(GARBAGE_ALL) 
 	rm -rf $(TARGET_DIR)
-	
 
-.PHONY: all pdf zh_pdf mix_pdf md zh_md mix_md clean cleanall
+init_ubuntu:
+	@echo "在ubuntu下安装相关的依赖包"
+	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all 
+	sudo apt install -y rubber  pandoc pandoc-citeproc pandoc-citeproc-preamble  pandoc-data pandoc-sidenote graphviz
+
+init_centos:
+	@echo "在centos下安装相关的依赖包"
+	@echo "尚未实现 todo...."
+
+.PHONY: all pdf zh_pdf mix_pdf md zh_md mix_md init_ubuntu init_centos clean cleanall
 .SILENT: pdf
 
 # vim: set tabstop=4 shiftwidth=4 noexpandtab
