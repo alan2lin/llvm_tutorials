@@ -21,7 +21,6 @@ pdf: zh_pdf mix_pdf
 md: zh_md mix_md
 
 
-zh_pdf: export ENG=OFF
 zh_pdf: common_dep
 	@echo "纯中文版pdf生成开始...."
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_zh.pdf ; done
@@ -30,12 +29,12 @@ zh_pdf: common_dep
 %_zh.pdf: %.tex
 	@echo "纯中文版pdf生成...."
 #	rubber -m pdftex --jobname=$(basename $<)_zh   $< 
-	latex --jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
-	dvipdf $(basename $<)_zh.dvi
+#	latex --jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
+#	dvipdf $(basename $<)_zh.dvi
+	xelatex -jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
 
-mix_pdf: export ENG=ON
 mix_pdf: common_dep
 	@echo "双语版生pdf成开始...."
 	for file in $$(ls *tex | cut -d \. -f 1) ; do make $${file}_mix.pdf ; done
@@ -43,8 +42,9 @@ mix_pdf: common_dep
 %_mix.pdf: %.tex
 	@echo "双语版pdf生成...."
 #	rubber -m pdftex --jobname=$(basename $<)_mix  $< 
-	latex --jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
-	dvipdf $(basename $<)_mix.dvi
+#	latex --jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
+#	dvipdf $(basename $<)_mix.dvi
+	xelatex -jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
 
@@ -87,7 +87,7 @@ cleanall:
 
 init_ubuntu:
 	@echo "在ubuntu下安装相关的依赖包"
-	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex
+	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex texlive-lang-chinese texlive-fonts-extra texlive-latex-extra texlive-latex-recommended texlive-publishers
 	sudo apt install -y rubber  pandoc pandoc-citeproc pandoc-citeproc-preamble  pandoc-data pandoc-sidenote graphviz
 
 init_centos:
