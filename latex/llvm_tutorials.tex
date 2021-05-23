@@ -3,33 +3,48 @@
 \usepackage{graphicx}
 \usepackage{ifthen}
 \usepackage{xeCJK}
+\usepackage{blindtext}
 
 \begin{document}
 
+\ifdefined\eng
+\else
+\newcommand{\eng}{false}
+\fi
+
 \author{alan2lin}
-\title{english test}
-\date{January 2013}
+\title{
+	LLVM 教程翻译 \\
+	\large \ifthenelse{\equal{\eng}{true}}{
+		Bilingual Edition 双语版 
+	}{
+		Chinese Edition 纯中文版
+	}
+}
+
+
+\date{May 2021}
+
+
 
 \frontmatter
 \maketitle
+
 \tableofcontents
 
 \mainmatter
+
+
+
+
 \include{./chapters/chapter01}
 \include{./chapters/chapter02}
 
 
 
-abc
 
-\ifthenelse{\equal{\eng}{true}}{
- show english 
-}{
-	only chinese 中文
-}
 
-abc 
-abc
+
 \backmatter
 % bibliography, glossary and index would go here.
 

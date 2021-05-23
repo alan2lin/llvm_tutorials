@@ -16,7 +16,7 @@ llvm 教程翻译
 * [纯中文版pdf](target/pdf/llvm_tutorials_zh.pdf)
 * [双语版pdf](target/pdf/llvm_tutorials_mix.pdf)
 * [纯中文版md 在线](target/md/llvm_tutorials_zh.md)
-* [双语版md 在线](target/md/llvm_tutorials_mix.md)
+* 不可用,目前还无法解决latex转换成md文件时的条件控制 [双语版md 在线](target/md/llvm_tutorials_mix.md)
 
 
 常用命令 
@@ -29,7 +29,7 @@ llvm 教程翻译
    ` make mix_pdf `
 * 编译 纯中文版 双语版的 md    
 ` make md `
- - 编译 纯中文版 md      
+ - 编译 纯中文版 md   
    ` make zh_md `
  - 编译 双语版 md    
    ` make mix_md `
@@ -73,6 +73,6 @@ llvm 教程翻译
 
 
 ## 工作过程
-latex 是核心
+latex 是核心 
 
 ## 欢迎来搞
