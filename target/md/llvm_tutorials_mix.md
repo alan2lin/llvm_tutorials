@@ -1,9 +1,5 @@
-The First Chapter
-=================
+LLVM 系统入门 falsetrue(Getting Started with the LLVM System) 
+=============================================================
 
 The Second Chapter
 ==================
-
-abc
-
-chinese 中文中文中文中文中文中文中文 abc abc

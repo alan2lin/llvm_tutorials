@@ -11,6 +11,11 @@
 \else
 \newcommand{\eng}{false}
 \fi
+\newcommand{\engtrue}{true}
+
+\newcommand{\engtitle}[1]{ \ifx\eng\engtrue ({#1}) \fi  }
+
+
 
 \author{alan2lin}
 \title{
