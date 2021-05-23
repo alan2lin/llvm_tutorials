@@ -13,10 +13,10 @@ llvm 教程翻译
 ` make all`   
 然后 查看 target 目录下的 内容即可
 
-* [纯中文版pdf](target/pdf/main_zh.pdf)
-* [双语版pdf](target/pdf/main_mix.pdf)
-* [纯中文版md 在线](target/md/main_zh.md)
-* [双语版md 在线](target/md/main_mix.md)
+* [纯中文版pdf](target/pdf/llvm_tutorials_zh.pdf)
+* [双语版pdf](target/pdf/llvm_tutorials_mix.pdf)
+* [纯中文版md 在线](target/md/llvm_tutorials_zh.md)
+* [双语版md 在线](target/md/llvm_tutorials_mix.md)
 
 
 常用命令 
@@ -47,7 +47,7 @@ llvm 教程翻译
 │   ├── chapters                     //各个章节存放目录                            
 │   │   ├── chapter01.tex
 │   │   └── chapter02.tex
-│   ├── main.tex                     //书的入口
+│   ├── llvm_tutorials.tex                     //书的入口
 │   ├── Makefile                     //
 │   └── resources                    // 存放资源文件
 │       ├── dot                      // dot 画图的元文件
@@ -59,15 +59,15 @@ llvm 教程翻译
 ├── README.md                        // 本readme
 └── target                           //生成物
     ├── md                           //md格式制品
-    │   ├── main_mix.md
-    │   ├── main_zh.md
+    │   ├── llvm_tutorials_mix.md
+    │   ├── llvm_tutorials_zh.md
     │   └── resources
     │       ├── images
     │       └── images-gen
     │           └── test.svg
     └── pdf                          // pdf格式制品
-        ├── main_mix.pdf
-        └── main_zh.pdf
+        ├── llvm_tutorials_mix.pdf
+        └── llvm_tutorials_zh.pdf
 
 </pre>
 

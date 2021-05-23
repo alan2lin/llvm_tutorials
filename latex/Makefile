@@ -27,7 +27,7 @@ zh_pdf: common_dep
 
 %_zh.pdf: %.tex
 	@echo "纯中文版pdf生成...."
-	rubber -m pdftex --jobname=$(basename $<)_zh $< 
+	rubber -m pdftex --jobname=$(basename $<)_zh   $< 
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
 
@@ -37,7 +37,7 @@ mix_pdf: common_dep
 
 %_mix.pdf: %.tex
 	@echo "双语版pdf生成...."
-	rubber -m pdftex --jobname=$(basename $<)_mix $< 
+	rubber -m pdftex --jobname=$(basename $<)_mix  $< 
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
 
@@ -76,7 +76,7 @@ clean:
 cleanall:
 	@echo "清理所有...."
 	rm -f $(GARBAGE_ALL) 
-	rm -rf $(TARGET_DIR)
+	rm -rf $(TARGET_DIR)/*
 
 init_ubuntu:
 	@echo "在ubuntu下安装相关的依赖包"
