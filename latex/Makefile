@@ -30,7 +30,7 @@ zh_pdf: common_dep
 %_zh.pdf: %.tex
 	@echo "纯中文版pdf生成...."
 #	rubber -m pdftex --jobname=$(basename $<)_zh   $< 
-	latex  '\newcommand{\blackandwhite}{true} \input{$<}' --jobname=$(basename $<)_zh   
+	latex --jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
 	dvipdf $(basename $<)_zh.dvi
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
@@ -43,7 +43,7 @@ mix_pdf: common_dep
 %_mix.pdf: %.tex
 	@echo "双语版pdf生成...."
 #	rubber -m pdftex --jobname=$(basename $<)_mix  $< 
-	latex  '\newcommand{\blackandwhite}{true} \input{$<}' --jobname=$(basename $<)_mix  
+	latex --jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
 	dvipdf $(basename $<)_mix.dvi
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
@@ -87,7 +87,7 @@ cleanall:
 
 init_ubuntu:
 	@echo "在ubuntu下安装相关的依赖包"
-	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all 
+	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex
 	sudo apt install -y rubber  pandoc pandoc-citeproc pandoc-citeproc-preamble  pandoc-data pandoc-sidenote graphviz
 
 init_centos:
