@@ -15,8 +15,8 @@ TARGET_FILES :=$(shell find $(TARGET_DIR)/ -type f -name "*" )
 RESOURCES_DIR := resources
 DOT_FILES := $(shell find $(RESOURCES_DIR)/dot/ -type f -name "*.dot" )
 
-
-all: pdf md clean
+view: all openpdf
+all: pdf md clean 
 pdf: zh_pdf mix_pdf 
 md: zh_md mix_md
 
@@ -94,7 +94,10 @@ init_centos:
 	@echo "在centos下安装相关的依赖包"
 	@echo "尚未实现 todo...."
 
-.PHONY: all pdf zh_pdf mix_pdf md zh_md mix_md init_ubuntu init_centos clean cleanall
+openpdf:
+	xdg-open $(TARGET_DIR)/pdf/llvm_tutorials_mix.pdf
+
+.PHONY: all pdf zh_pdf mix_pdf md zh_md mix_md init_ubuntu init_centos clean cleanall view 
 .SILENT: pdf
 
 # vim: set tabstop=4 shiftwidth=4 noexpandtab

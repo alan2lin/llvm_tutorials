@@ -6,6 +6,7 @@ llvm 教程翻译
 
 确保你已经安装了 make    
 执行环境依赖包初始化    
+` cd latex`
 ` make init_ubuntu `
 
 ## 运行
