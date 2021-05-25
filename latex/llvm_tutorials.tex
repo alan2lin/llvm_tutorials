@@ -1,10 +1,27 @@
 \documentclass[a4paper,12pt]{book}
 
 \usepackage{graphicx}
-\usepackage{ifthen}
-\usepackage{xeCJK}
+\usepackage{ifthen}          %条件参数
+\usepackage{xeCJK}           %中文支持
 \usepackage{blindtext}
-\usepackage{indentfirst}
+\usepackage{indentfirst}     %首行缩进
+\usepackage{nomencl}         % 名词解释 
+%\usepackage[nocfg]{nomencl}
+\usepackage[acronym]{glossaries}      % 术语表  比较正规的，无二义性的词
+% 实话说我也不知道区别在哪里,解释把我搞蒙了。看起来 glossary 更好用一点  
+% https://tex.stackexchange.com/questions/63923/difference-between-a-nomenclature-section-and-a-glossary
+% https://tex.stackexchange.com/questions/154060/nomenclature-acronym-or-glossary
+
+\makeglossaries
+\newglossaryentry{glsy}
+{
+    name=术语,
+    description={Acronyms and terms which are generally unknown or new to common readers.}
+}
+\newacronym{s2e}{S2E}{Start to End}
+
+
+\makenomenclature 
 
 \begin{document}
 
@@ -15,7 +32,21 @@
 \newcommand{\engtrue}{true}
 
 \newcommand{\engtitle}[1]{ \ifx\eng\engtrue ({#1}) \fi  }
-\newcommand{\engpara}[1]{ \ifx\eng\engtrue \par {#1}  \fi  }
+\newcommand{\engpar}[1]{ \ifx\eng\engtrue \par {#1}  \fi  }
+
+% 术语表加入中文项
+\newcommand{\nomchinese}[1]
+{
+    \renewcommand{\nomentryend}{\hspace*{\fill}\makebox[4cm][l]{#1}}
+}
+
+\renewcommand{\nomname}{词汇表} %修改术语表标题的名称。
+
+\nomenclature{LaTeX}{LaTeX is ...}
+\nomenclature{A}{A is ...\nomchinese{中文测试}}
+\nomenclature{B}{B is ...}
+\nomenclature{C}{C is ...}
+
 
 
 \author{alan2lin}
@@ -47,8 +78,12 @@
 \include{./chapters/chapter02}
 
 
+aaa \acrlong{s2e} aaaaaaaaaaaaaaa \acrshort{s2e} aaaaaaaaaa  \Gls{glsy}
 
-
+\printnomenclature
+%\printglossaries
+\printglossary[type=\acronymtype, title=缩略语表, toctitle=缩略语表]
+\printglossary[title=术语表, toctitle=术语表]
 
 
 \backmatter

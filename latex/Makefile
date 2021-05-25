@@ -6,7 +6,10 @@
 
 SUBDIR_ROOTS := chapters 
 DIRS := . $(shell find $(SUBDIR_ROOTS) -type d ) resources/images-gen
-GARBAGE_PATTERNS := "*.gz(busy)" *.aux *.log  *.aux *.bbl *.log *.out *.synctex.gz *.fls *.toc 
+GARBAGE_PATTERNS := "*.gz(busy)" *.aux *.log  *.aux *.bbl *.log *.out *.synctex.gz *.fls *.toc \
+       	*.nlo *.nls \
+	*.glo *.glg *.gls *.ist *.ilg \
+	*.acn *.acr *.alg 
 GARBAGE_PATTERNS_ALL := $(GARBAGE_PATTERNS) *.pdf  *.dvi *.md *.svg *.png *.jpg
 GARBAGE := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS)))
 GARBAGE_ALL := $(foreach DIR,$(DIRS),$(addprefix $(DIR)/,$(GARBAGE_PATTERNS_ALL))) 
@@ -32,6 +35,9 @@ zh_pdf: common_dep
 #	latex --jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
 #	dvipdf $(basename $<)_zh.dvi
 	xelatex -jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
+	makeglossaries $(basename $<)_zh
+	makeindex $(basename $<)_zh.nlo -s `apt-file search nomencl.ist | cut -d \: -f 2` -o $(basename $<)_zh.nls
+	xelatex -jobname=$(basename $<)_zh  '\newcommand{\eng}{false} \input{$<}'   
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
 
@@ -44,6 +50,9 @@ mix_pdf: common_dep
 #	rubber -m pdftex --jobname=$(basename $<)_mix  $< 
 #	latex --jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
 #	dvipdf $(basename $<)_mix.dvi
+	xelatex -jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
+	makeglossaries $(basename $<)_mix
+	makeindex $(basename $<)_mix.nlo -s `apt-file search nomencl.ist | cut -d \: -f 2` -o $(basename $<)_mix.nls
 	xelatex -jobname=$(basename $<)_mix  '\newcommand{\eng}{true} \input{$<}'  
 	@echo "拷贝到target...."
 	mv $@ $(TARGET_DIR)/pdf/
@@ -87,6 +96,9 @@ cleanall:
 
 init_ubuntu:
 	@echo "在ubuntu下安装相关的依赖包"
+	sudo apt-file  update
+	sudo apt update -y
+	sudo apt upgrade -y
 	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex texlive-lang-chinese texlive-fonts-extra texlive-latex-extra texlive-latex-recommended texlive-publishers
 	sudo apt install -y rubber  pandoc pandoc-citeproc pandoc-citeproc-preamble  pandoc-data pandoc-sidenote graphviz
 
