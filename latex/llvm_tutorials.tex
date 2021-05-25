@@ -12,13 +12,9 @@
 % https://tex.stackexchange.com/questions/63923/difference-between-a-nomenclature-section-and-a-glossary
 % https://tex.stackexchange.com/questions/154060/nomenclature-acronym-or-glossary
 
+\loadglsentries{./chapters/glossary}
+\loadglsentries{./chapters/acronym}
 \makeglossaries
-\newglossaryentry{glsy}
-{
-    name=术语,
-    description={Acronyms and terms which are generally unknown or new to common readers.}
-}
-\newacronym{s2e}{S2E}{Start to End}
 
 
 \makenomenclature 
@@ -34,18 +30,6 @@
 \newcommand{\engtitle}[1]{ \ifx\eng\engtrue ({#1}) \fi  }
 \newcommand{\engpar}[1]{ \ifx\eng\engtrue \par {#1}  \fi  }
 
-% 术语表加入中文项
-\newcommand{\nomchinese}[1]
-{
-    \renewcommand{\nomentryend}{\hspace*{\fill}\makebox[4cm][l]{#1}}
-}
-
-\renewcommand{\nomname}{词汇表} %修改术语表标题的名称。
-
-\nomenclature{LaTeX}{LaTeX is ...}
-\nomenclature{A}{A is ...\nomchinese{中文测试}}
-\nomenclature{B}{B is ...}
-\nomenclature{C}{C is ...}
 
 
 
@@ -76,6 +60,8 @@
 
 \include{./chapters/chapter01}
 \include{./chapters/chapter02}
+
+\include{./chapters/nomenclature}
 
 
 aaa \acrlong{s2e} aaaaaaaaaaaaaaa \acrshort{s2e} aaaaaaaaaa  \Gls{glsy}

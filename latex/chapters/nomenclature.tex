@@ -1,0 +1,14 @@
+
+% 术语表加入中文项
+
+\newcommand{\nomchinese}[1]
+{
+    \renewcommand{\nomentryend}{\hspace*{\fill}\makebox[4cm][l]{#1}}
+}
+
+\renewcommand{\nomname}{词汇表} %修改术语表标题的名称。
+
+\nomenclature{LaTeX}{LaTeX is ...}
+\nomenclature{A}{A is ...\nomchinese{中文测试}}
+\nomenclature{B}{B is ...}
+\nomenclature{C}{C is ...}
