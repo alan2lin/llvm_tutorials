@@ -2,8 +2,19 @@
 \section{概述 \engtitle{Overview}}
 欢迎来到 LLVM 项目!
 \engpar{Welcome to the LLVM project!}   
-\par{LLVM项目包含多个组件。 该项目的核心本身称为“LLVM”。 它包含处理中间表示层并将其转换为目标文件所需的所有工具，库和头文件。 工具包括汇编器，反汇编器，位码分析器和位码优化器。 它还包含基本的回归测试。}
+\par{LLVM项目包含多个组件。 该项目的核心本身称为“LLVM”。 它包含处理中间表示层并将其转换为目标文件所需的所有工具，库和头文件。 工具包括汇编器，反汇编器，\gls{bitcode}\footnote{\glsdesc{bitcode}}分析器和\gls{bitcode}优化器。 它还包含基本的回归测试。}
 \engpar{The LLVM project has multiple components. The core of the project is itself called “LLVM”. This contains all of the tools, libraries, and header files needed to process intermediate representations and converts it into object files. Tools include an assembler, disassembler, bitcode analyzer, and bitcode optimizer. It also contains basic regression tests.}
-\par{类C语言使用Clang前端。 该组件将C，C ++，Objective C和Objective C ++代码编译为LLVM位码，并使用LLVM将位码编译为目标文件。}
+\par{类C语言使用Clang前端。 该组件将C，C ++，Objective C和Objective C ++代码编译为LLVM\gls{bitcode}，并使用LLVM将\gls{bitcode}编译为目标文件。}
 \engpar{C-like languages use the Clang front end. This component compiles C, C++, Objective C, and Objective C++ code into LLVM bitcode – and from there into object files, using LLVM.}
+\par{其他组件包括：libc ++ C ++标准库，LLD链接器等。}
+\engpar{Other components include: the libc++ C++ standard library, the LLD linker, and more.}
+\par{获取源代码并构建LLVM}
+\engpar{Getting the Source Code and Building LLVM}
+\par{LLVM入门文档可能已过时。  Clang入门页可能包含更准确的信息。}
+\engpar{The LLVM Getting Started documentation may be out of date. The Clang Getting Started page might have more accurate information.}
+\par{这是一个获取和构建llvm源码的工作流程和配置的例子：}
+\engpar{This is an example workflow and configuration to get and build the LLVM source:}
 
+\begin{enumerate}
+	\item \par{签出LLVM（包括相关的子项目，如Clang）：}   \engpar{Checkout LLVM (including related subprojects like Clang):}
+\end{enumerate}

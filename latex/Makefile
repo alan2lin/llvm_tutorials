@@ -99,7 +99,7 @@ init_ubuntu:
 	sudo apt-file  update
 	sudo apt update -y
 	sudo apt upgrade -y
-	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex texlive-lang-chinese texlive-fonts-extra texlive-latex-extra texlive-latex-recommended texlive-publishers
+	sudo apt install -y texstudio texstudio-doc  texstudio-l10n latex-cjk-all texlive-xetex texlive-lang-chinese texlive-fonts-extra texlive-latex-extra texlive-latex-recommended texlive-publishers latexmk
 	sudo apt install -y rubber  pandoc pandoc-citeproc pandoc-citeproc-preamble  pandoc-data pandoc-sidenote graphviz
 
 init_centos:

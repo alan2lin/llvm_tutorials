@@ -12,12 +12,12 @@
 % https://tex.stackexchange.com/questions/63923/difference-between-a-nomenclature-section-and-a-glossary
 % https://tex.stackexchange.com/questions/154060/nomenclature-acronym-or-glossary
 
-\loadglsentries{./chapters/glossary}
-\loadglsentries{./chapters/acronym}
-\makeglossaries
+\loadglsentries{./chapters/glossary}  %装载术语表
+\loadglsentries{./chapters/acronym}   %装载缩略语表
+\makeglossaries                       %生成术语表和缩略语表
 
 
-\makenomenclature 
+\makenomenclature                     %生成词汇表
 
 \begin{document}
 
@@ -28,9 +28,7 @@
 \newcommand{\engtrue}{true}
 
 \newcommand{\engtitle}[1]{ \ifx\eng\engtrue ({#1}) \fi  }
-\newcommand{\engpar}[1]{ \ifx\eng\engtrue \par {#1}  \fi  }
-
-
+\newcommand{\engpar}[1]{ \ifx\eng\engtrue \par {\textit{#1}}  \fi  }
 
 
 \author{alan2lin}
@@ -45,8 +43,6 @@
 
 
 \date{May 2021}
-
-
 
 \frontmatter
 \maketitle

@@ -38,7 +38,8 @@ llvm 教程翻译
 ` make clean `
 * 清理所有包括target 目录    
 ` make cleanall `
-
+* 在gnome下 make all 后在 document viewer 里面打开pdf    
+` make view`
 
 ## 布局
 
