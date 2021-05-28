@@ -50,9 +50,64 @@ Getting Started page might have more accurate information.*
 *This is an example workflow and configuration to get and build the LLVM
 source:*
 
-1.  签出LLVM（包括相关的子项目，如Clang）： falsetrue
+1.  检出LLVM（包括相关的子项目，如Clang）： falsetrue
 
     *Checkout LLVM (including related subprojects like Clang):*
+
+    -   git clone https://github.com/llvm/llvm-project.git
+
+    -   或者在windows上 git clone --config core.autocrlf=false
+        https://github.com/llvm/llvm-project.git falsetrue
+
+        *or, on windows, git clone --config core.autocrlf=false
+        https://github.com/llvm/llvm-project.git*
+
+    -   为了节省存储和加快检出时间,你可能想要一个浅拷贝。例如，要获取LLVM项目的最后一次修订[^2],使用
+        git clone --depth 1 https://github.com/llvm/llvm-project.git
+        falsetrue
+
+        *To save storage and speed-up the checkout time, you may want to
+        do a shallow clone. For example, to get the latest revision of
+        the LLVM project, use git clone --depth 1
+        https://github.com/llvm/llvm-project.git*
+
+2.  falsetrue
+
+    -   cd llvm-project
+
+    -   mkdir build
+
+    -   cd build
+
+    -   cmake -G \<生成器\> \[选项\] ../llvm falsetrue
+
+        *cmake -G \<generator\> \[options\] ../llvm*
+
+        一些常见的构建系统生成器: falsetrue
+
+        *Some common build system generators are:*
+
+        -   Ninja --- 用于生成Ninja [^3] 构建文件. 大多数的 llvm
+            开发者使用 Ninja。 falsetrue
+
+            *Ninja --- for generating Ninja build files. Most llvm
+            developers use Ninja.*
+
+        -   Unix Makefiles --- 用于生成与make兼容的并行编译makeflies。
+            falsetrue
+
+            *Unix Makefiles --- for generating make-compatible parallel
+            makefiles.*
+
+        -   Visual Studio --- 用于生成 Visual Studio 项目和解决方案。
+            falsetrue
+
+            *Visual Studio --- for generating Visual Studio projects and
+            solutions.*
+
+        -   Xcode --- 用于生成 Xcode 项目。 falsetrue
+
+            *Xcode --- for generating Xcode projects.*
 
 The Second Chapter
 ==================
@@ -62,3 +117,7 @@ aaaaaaaaaaaaaaa [s2e]{acronym-label="s2e" acronym-form="singular+abbrv"}
 aaaaaaaaaa [glsy]{acronym-label="glsy" acronym-form="singular+short"}
 
 [^1]: [bitcode]{acronym-label="bitcode" acronym-form="singular+long"}
+
+[^2]: 在git或者svn等版本管理软件中，一次提交就会形成一次修订
+
+[^3]: [ninja]{acronym-label="ninja" acronym-form="singular+long"}

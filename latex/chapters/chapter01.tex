@@ -1,5 +1,4 @@
-\chapter{LLVM 系统入门 \\  \engtitle{Getting Started with the LLVM System} }
-\section{概述 \engtitle{Overview}}
+\chapter{LLVM 系统入门 \\  \engtitle{Getting Started with the LLVM System} } \section{概述 \engtitle{Overview}}
 欢迎来到 LLVM 项目!
 \engpar{Welcome to the LLVM project!}   
 \par{LLVM项目包含多个组件。 该项目的核心本身称为“LLVM”。 它包含处理中间表示层并将其转换为目标文件所需的所有工具，库和头文件。 工具包括汇编器，反汇编器，\gls{bitcode}\footnote{\glsdesc{bitcode}}分析器和\gls{bitcode}优化器。 它还包含基本的回归测试。}
@@ -16,5 +15,36 @@
 \engpar{This is an example workflow and configuration to get and build the LLVM source:}
 
 \begin{enumerate}
-	\item \par{签出LLVM（包括相关的子项目，如Clang）：}   \engpar{Checkout LLVM (including related subprojects like Clang):}
+	\item \par{检出LLVM（包括相关的子项目，如Clang）：}   \engpar{Checkout LLVM (including related subprojects like Clang):}
+		\begin{itemize}
+			\item [$\circ$] \par{git clone https://github.com/llvm/llvm-project.git}
+			\item [$\circ$] \par{或者在windows上 git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git} 
+			       \engpar{or, on windows, git clone --config core.autocrlf=false https://github.com/llvm/llvm-project.git} 
+
+		       \item [$\circ$] \par{为了节省存储和加快检出时间,你可能想要一个浅拷贝。例如，要获取LLVM项目的最后一次修订\footnote{在git或者svn等版本管理软件中，一次提交就会形成一次修订},使用 git clone --depth 1 https://github.com/llvm/llvm-project.git} 
+				\engpar{To save storage and speed-up the checkout time, you may want to do a shallow clone. For example, to get the latest revision of the LLVM project, use git clone --depth 1 https://github.com/llvm/llvm-project.git}
+
+		\end{itemize}
+
+	\item \par{}   \engpar{}
+		\begin{itemize}
+			\item [$\circ$] \par{cd llvm-project}
+			\item [$\circ$] \par{mkdir build}
+			\item [$\circ$] \par{cd build}
+			\item [$\circ$] \par{cmake -G <生成器> [选项] ../llvm}
+				\engpar{cmake -G <generator> [options] ../llvm}
+				\par{一些常见的构建系统生成器:}
+				\engpar{Some common build system generators are:}
+                                \renewcommand\labelitemii{$\blacksquare$}
+					\begin{itemize}
+                                            \renewcommand\labelitemii{$\blacksquare$}
+				    \item  \par{Ninja — 用于生成Ninja \footnote{\glsdesc{ninja}} 构建文件. 大多数的 llvm 开发者使用 Ninja。}  \engpar{Ninja — for generating Ninja build files. Most llvm developers use Ninja.}
+				    \item  \par{Unix Makefiles — 用于生成与make兼容的并行编译makeflies。}  \engpar{Unix Makefiles — for generating make-compatible parallel makefiles.}
+				    \item  \par{Visual Studio — 用于生成 Visual Studio 项目和解决方案。}  \engpar{Visual Studio — for generating Visual Studio projects and solutions.}
+				    \item  \par{Xcode — 用于生成 Xcode 项目。}  \engpar{Xcode — for generating Xcode projects.}
+					\end{itemize}
+				\par{一些常见的选项:}
+				\engpar{Some Common options:}
+
+		\end{itemize}
 \end{enumerate}
