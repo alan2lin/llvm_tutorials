@@ -22,7 +22,8 @@ it into object files. Tools include an assembler, disassembler, bitcode
 analyzer, and bitcode optimizer. It also contains basic regression
 tests.*
 
-类C语言使用Clang前端。 该组件将C，C ++，Objective C和Objective C
+类C语言使用[Clang](https://clang.llvm.org/)前端。 该组件将C，C
+++，Objective C和Objective C
 ++代码编译为LLVM[bitcode]{acronym-label="bitcode"
 acronym-form="singular+short"}，并使用LLVM将[bitcode]{acronym-label="bitcode"
 acronym-form="singular+short"}编译为目标文件。 falsetrue
@@ -71,7 +72,9 @@ source:*
         the LLVM project, use git clone --depth 1
         https://github.com/llvm/llvm-project.git*
 
-2.  falsetrue
+2.  配置并构建 LLVM 和 Clang: falsetrue
+
+    *Configure and build LLVM and Clang:*
 
     -   cd llvm-project
 
@@ -108,6 +111,66 @@ source:*
         -   Xcode --- 用于生成 Xcode 项目。 falsetrue
 
             *Xcode --- for generating Xcode projects.*
+
+        一些常见的选项: falsetrue
+
+        *Some Common options:*
+
+        -   -DLLVM\_ENABLE\_PROJECTS='\...'
+            你要额外构建的LLVM子项目的分号分隔列表,可以包含以下任意项:
+            clang, clang-tools-extra, libcxx, libcxxabi, libunwind,
+            lldb, compiler-rt, lld, polly, 或 debuginfo-tests。
+            falsetrue
+
+            *-DLLVM\_ENABLE\_PROJECTS='\...' --- semicolon-separated
+            list of the LLVM subprojects you'd like to additionally
+            build. Can include any of: clang, clang-tools-extra, libcxx,
+            libcxxabi, libunwind, lldb, compiler-rt, lld, polly, or
+            debuginfo-tests.*
+
+            例如要构建LLVM,Clang,libcxx和libcxxabi,使用
+            -DLLVM\_ENABLE\_PROJECTS=\"clang;libcxx;libcxxabi\"。
+            falsetrue
+
+            *For example, to build LLVM, Clang, libcxx, and libcxxabi,
+            use -DLLVM\_ENABLE\_PROJECTS=\"clang;libcxx;libcxxabi\".*
+
+        -   -DCMAKE\_INSTALL\_PREFIX=目录 --- 为目录指定要安装 LLVM
+            工具和库的位置的完整路径名（默认为 /usr/local）。 falsetrue
+
+            *-DCMAKE\_INSTALL\_PREFIX=directory --- Specify for
+            directory the full pathname of where you want the LLVM tools
+            and libraries to be installed (default /usr/local).*
+
+        -   -DCMAKE\_BUILD\_TYPE=类型 --- 类型的有效选项为
+            Debug、Release、RelWithDebInfo 和 MinSizeRel。 默认为Debug。
+            falsetrue
+
+            *-DCMAKE\_BUILD\_TYPE=type --- Valid options for type are
+            Debug, Release, RelWithDebInfo, and MinSizeRel. Default is
+            Debug.*
+
+        -   -DLLVM\_ENABLE\_ASSERTIONS=开 ---
+            启用断言检查进行编译（调试版本的默认值为
+            Yes，所有其他版本类型的默认值为 No）。 Compile with
+            assertion checks enabled (default is Yes for Debug builds,
+            No for all other build types). falsetrue
+
+            *-DLLVM\_ENABLE\_ASSERTIONS=On --- Compile with assertion
+            checks enabled (default is Yes for Debug builds, No for all
+            other build types).*
+
+    -   cmake --build . \[--target \<目标\>\]或
+        直接上面所指定的构建系统。 falsetrue
+
+        *cmake --build . \[--target \<target\>\] or the build system
+        specified above directly.*
+
+        -   默认目标 (例如: cmake --build . 或 make) 将构建所有的LLVM。
+            falsetrue
+
+            *The default target (i.e. cmake --build . or make) will
+            build all of LLVM.*
 
 The Second Chapter
 ==================
