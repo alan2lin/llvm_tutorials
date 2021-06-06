@@ -37,9 +37,8 @@ there into object files, using LLVM.*
 *Other components include: the libc++ C++ standard library, the LLD
 linker, and more.*
 
-获取源代码并构建LLVM falsetrue
-
-*Getting the Source Code and Building LLVM*
+获取源代码并构建LLVM falsetrue(Getting the Source Code and Building LLVM) 
+-------------------------------------------------------------------------
 
 LLVM入门文档可能已过时。 Clang入门页可能包含更准确的信息。 falsetrue
 
@@ -209,6 +208,16 @@ falsetrue
 *Consult the Getting Started with LLVM section for detailed information
 on configuring and compiling LLVM. Go to Directory Layout to learn about
 the layout of the source code tree.*
+
+要求 falsetrue(Requirements) 
+----------------------------
+
+在开始使用 LLVM 系统之前，请查看下面给出的要求。
+通过提前了解您需要哪些硬件和软件，这可能会为您省去一些麻烦。 falsetrue
+
+*Before you begin to use the LLVM system, review the requirements given
+below. This may save you some trouble by knowing ahead of time what
+hardware and software you will need.*
 
 The Second Chapter
 ==================
