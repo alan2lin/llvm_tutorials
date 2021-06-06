@@ -166,11 +166,49 @@ source:*
         *cmake --build . \[--target \<target\>\] or the build system
         specified above directly.*
 
-        -   默认目标 (例如: cmake --build . 或 make) 将构建所有的LLVM。
-            falsetrue
+        -   默认目标 (例如: cmake --build . 或 make)
+            将构建所有的LLVM内容。 falsetrue
 
             *The default target (i.e. cmake --build . or make) will
             build all of LLVM.*
+
+        -   check-all 目标（例如 ninja
+            check-all）将运行回归测试以确保一切正常。 falsetrue
+
+            *The check-all target (i.e. ninja check-all) will run the
+            regression tests to ensure everything is in working order.*
+
+        -   CMake 会为每个工具和库生成构建目标，大多数 LLVM
+            子项目会生成自己的 check-\<project\> 目标 falsetrue
+
+            *CMake will generate build targets for each tool and
+            library, and most LLVM sub-projects generate their own
+            check-\<project\> target.*
+
+        -   运行串行构建会很慢。 要提高速度，请尝试运行并行构建。 这是在
+            Ninja 中默认完成的； 对于 make，使用选项 -j NN，其中 NN
+            是并行作业的数量，例如 可用 CPU 的数量。 falsetrue
+
+            *Running a serial build will be slow. To improve speed, try
+            running a parallel build. That's done by default in Ninja;
+            for make, use the option -j NN, where NN is the number of
+            parallel jobs, e.g. the number of available CPUs.*
+
+    -   更多信息参见CMake。 falsetrue
+
+        *For more information see CMake*
+
+    -   如果你遇到\"内部编译错误\"或者测试失败，参见下文。 falsetrue
+
+        *If you get an "internal compiler error (ICE)" or test failures,
+        see below.*
+
+欲知入门指南关于配置和编译LLVM详细信息,请转到目录布局去了解源码树的布局
+falsetrue
+
+*Consult the Getting Started with LLVM section for detailed information
+on configuring and compiling LLVM. Go to Directory Layout to learn about
+the layout of the source code tree.*
 
 The Second Chapter
 ==================
