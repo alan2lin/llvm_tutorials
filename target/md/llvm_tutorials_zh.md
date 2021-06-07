@@ -219,6 +219,32 @@ the layout of the source code tree.*
 below. This may save you some trouble by knowing ahead of time what
 hardware and software you will need.*
 
+硬件 falsetrue(Hardware) 
+------------------------
+
+已经知道LLVM在可以在以下主机平台运行: falsetrue
+
+*LLVM is known to work on the following host platforms:*
+
+  **OS**         **Arch**          **Compilers**
+  -------------- ----------------- ---------------
+  Linux          x86$^{1}$         GCC, Clang
+  Linux          amd64             GCC, Clang
+  Linux          ARM               GCC, Clang
+  Linux          Mips              GCC, Clang
+  Linux          PowerPC           GCC, Clang
+  Linux          SystemZ           GCC, Clang
+  Solaris        V9 (Ultrasparc)   GCC
+  FreeBSD        x86$^{1}$         GCC, Clang
+  FreeBSD        amd64             GCC, Clang
+  NetBSD         x86$^{1}$         GCC, Clang
+  NetBSD         amd64             GCC, Clang
+  macOS2         PowerPC           GCC
+  macOS          x86               GCC, Clang
+  Cygwin/Win32   x86$^{1,3}$       GCC
+  Windows        x86$^{1}$         Visual Studio
+  Windows x64    x86-64            Visual Studio
+
 The Second Chapter
 ==================
 

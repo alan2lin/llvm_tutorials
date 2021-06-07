@@ -73,4 +73,30 @@
 
 \section{要求 \engtitle{Requirements}}
 \par{在开始使用 LLVM 系统之前，请查看下面给出的要求。 通过提前了解您需要哪些硬件和软件，这可能会为您省去一些麻烦。} \engpar{Before you begin to use the LLVM system, review the requirements given below. This may save you some trouble by knowing ahead of time what hardware and software you will need.}
+\section{硬件 \engtitle{Hardware}}
+\par{已经知道LLVM在可以在以下主机平台运行:} \engpar{LLVM is known to work on the following host platforms:}
+
+
+\begin{tabular}{l l l}
+	\textbf{OS} & \textbf{Arch} & \textbf{Compilers} \\
+\hline
+	Linux 		&	x86$^{1}$	& GCC, Clang    \\  \hline  
+	Linux 		&	amd64		& GCC, Clang 	\\  \hline
+	Linux 		& 	ARM		& GCC, Clang    \\  \hline
+	Linux 		&	Mips		& GCC, Clang	\\  \hline	
+	Linux 		&	PowerPC		& GCC, Clang	\\  \hline
+	Linux		&	SystemZ		& GCC, Clang	\\  \hline
+	Solaris		&	V9 (Ultrasparc)	& GCC		\\  \hline
+	FreeBSD		&	x86$^{1}$	& GCC, Clang	\\  \hline
+	FreeBSD		&	amd64		& GCC, Clang	\\  \hline
+	NetBSD		&	x86$^{1}$	& GCC, Clang	\\  \hline
+	NetBSD		&	amd64		& GCC, Clang	\\  \hline
+	macOS2		&	PowerPC		& GCC		\\  \hline
+	macOS		&	x86		& GCC, Clang	\\  \hline
+	Cygwin/Win32	&	x86$^{1,3}$	& GCC		\\  \hline
+	Windows		&	x86$^{1}$	& Visual Studio	\\  \hline
+	Windows x64 	& 	x86-64		& Visual Studio	\\  \hline
+\end{tabular}
+
+
 
