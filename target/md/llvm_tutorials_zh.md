@@ -245,6 +245,26 @@ hardware and software you will need.*
   Windows        x86$^{1}$         Visual Studio
   Windows x64    x86-64            Visual Studio
 
++----------------------------------------------------------------------+
+| 注解 falsetrue                                                       |
+|                                                                      |
+| *note*                                                               |
++:=====================================================================+
+| 1.  代码生成支持奔腾及以上处理器 falsetrue                           |
+|                                                                      |
+|     *Code generation supported for Pentium processors and up*        |
+|                                                                      |
+| 2.  代码生成仅支持 32位 ABI falsetrue                                |
+|                                                                      |
+|     *Code generation supported for 32-bit ABI only*                  |
+|                                                                      |
+| 3.  要在基于 Win32 的系统上使用 LLVM 模块，您可以使用                |
+|     -DBUILD\_SHARED\_LIBS=On 配置 LLVM。 falsetrue                   |
+|                                                                      |
+|     *To use LLVM modules on Win32-based system, you may configure    |
+|     LLVM with -DBUILD\_SHARED\_LIBS=On.*                             |
++----------------------------------------------------------------------+
+
 The Second Chapter
 ==================
 
