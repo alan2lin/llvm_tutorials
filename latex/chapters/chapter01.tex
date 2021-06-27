@@ -122,3 +122,10 @@
 	\\\bottomrule
     \end{tabular}
 
+
+    \par{请注意，用于调试的构建需要大量时间和磁盘空间。 仅是 LLVM 的构建将需要大约 1-3 GB 的空间。 LLVM 和 Clang 的完整构建需要大约 15-20 GB 的磁盘空间。 确切的空间要求因系统而异。 （它这么大是因为包含了所有调试信息以及库静态链接到多个工具这个情况）。} \engpar{Note that Debug builds require a lot of time and disk space. An LLVM-only build will need about 1-3 GB of space. A full build of LLVM and Clang will need around 15-20 GB of disk space. The exact space requirements will vary by system. (It is so large because of all the debugging information and the fact that the libraries are statically linked into multiple tools).}
+
+    \par{如果你有磁盘空间的限制,你可以只构建选择的工具或者目标。发布版的构建空间要求就少的多。} \engpar{If you are space-constrained, you can build only selected tools or only selected targets. The Release build requires considerably less space.}
+
+    \par{LLVM 套件在其他平台上可能可以编译，但不能保证这样做会成功。 如果编译成功，LLVM 实用程序应该能够组装、反汇编、分析和优化 LLVM 位码。 代码生成也应该可以工作，尽管生成的本机代码可能无法在您的平台上运行。 } \engpar{The LLVM suite may compile on other platforms, but it is not guaranteed to do so. If compilation is successful, the LLVM utilities should be able to assemble, disassemble, analyze, and optimize LLVM bitcode. Code generation should work as well, although the generated native code may not work on your platform.}
+
